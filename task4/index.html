@@ -18,7 +18,7 @@
         <option value="profession">profession</option>
         <option value="accomplishment">accomplishment</option>
     </select>
-    <button onclick="ReactDOM.render(List(people, 'name', sel.options[sel.selectedIndex].text , 'desc', inp.value),document.getElementById('app'));">Filter</button>
+    <button onclick="filterArray(people, sel.options[sel.selectedIndex].text, inp.value)">Filter</button>
 
     <table>
         <tr>
@@ -27,13 +27,13 @@
             </th>
             <th>
                 Name
-                <button onclick="ReactDOM.render(List(people, 'name', '', 'desc', ''),document.getElementById('app'));"> \/</button>
-                <button onclick="ReactDOM.render(List(people, 'name', '', 'asc', ''),document.getElementById('app'));"> /\</button>
+                <button onclick="sortArray(people, 'name', 'asc'); filterArray(people, sel.options[sel.selectedIndex].text, inp.value)"> \/</button>
+                <button onclick="sortArray(people, 'name', 'desc'); filterArray(people, sel.options[sel.selectedIndex].text, inp.value)"> /\</button>
             </th>
             <th>
                 Profession
-                <button onclick="ReactDOM.render(List(people,  'profession', '', 'desc', ''),document.getElementById('app'));"> \/</button>
-                <button onclick="ReactDOM.render(List(people,  'profession', '', 'asc', ''),document.getElementById('app'));"> /\</button>
+                <button onclick="sortArray(people, 'profession', 'asc'); filterArray(people, sel.options[sel.selectedIndex].text, inp.value)"> \/</button>
+                <button onclick="sortArray(people, 'profession', 'desc'); filterArray(people, sel.options[sel.selectedIndex].text, inp.value)"> /\</button>
             </th>
         </tr>
     </table>
