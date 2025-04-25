@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+const { useState } = React;
+function Calculator() {
+  const [value, setValue] = useState("");
+  const [value2, setValue2] = useState("");
+  const [result, setResult] = useState(null);
+  const toNumber = (v) => parseFloat(v);
+  const factorial = (n) => {
+    if (n < 0 || !Number.isInteger(n)) return "Ошибка";
+    return n === 0 ? 1 : n * factorial(n - 1);
+  };
+  const calculate = (type) => {
+    const x = toNumber(value);
+    const y = toNumber(value2);
+    let res;
+    switch (type) {
+      case "pow": res = Math.pow(x, y); break;
+      case "factorial": res = factorial(x); break;
+      case "negate": res = -x; break;
+      case "inverse": res = 1 / x; break;
+      case "sqrt": res = Math.sqrt(x); break;
+      case "log": res = Math.log(x); break;
+      case "log10": res = Math.log10(x); break;
+      case "pi": res = Math.PI; break;
+      case "e": res = Math.E; break;
+      case "sin": res = Math.sin(x); break;
+      case "cos": res = Math.cos(x); break;
+      case "tan": res = Math.tan(x); break;
+      case "asin": res = Math.asin(x); break;
+      case "acos": res = Math.acos(x); break;
+      case "atan": res = Math.atan(x); break;
+      default: res = "Ошибка";
+    }
+    setResult(res);
+  };
+  return (
+    <div className="calculator">
+      <h2>Научный Калькулятор</h2>
+      <input
+        type="number"
+        placeholder="Число x"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="Число y (для x^y)"
+        value={value2}
+        onChange={(e) => setValue2(e.target.value)}
+      />
+      <div className="buttons">
+        <button onClick={() => calculate("pow")}>xʸ</button>
+        <button onClick={() => calculate("factorial")}>x!</button>
+        <button onClick={() => calculate("negate")}>±</button>
+        <button onClick={() => calculate("inverse")}>1/x</button>
+        <button onClick={() => calculate("sqrt")}>√x</button>
+        <button onClick={() => calculate("log")}>ln(x)</button>
+        <button onClick={() => calculate("log10")}>log₁₀(x)</button>
+        <button onClick={() => calculate("pi")}>π</button>
+        <button onClick={() => calculate("e")}>e</button>
+        <button onClick={() => calculate("sin")}>sin(x)</button>
+        <button onClick={() => calculate("cos")}>cos(x)</button>
+        <button onClick={() => calculate("tan")}>tan(x)</button>
+        <button onClick={() => calculate("asin")}>asin(x)</button>
+        <button onClick={() => calculate("acos")}>acos(x)</button>
+        <button onClick={() => calculate("atan")}>atan(x)</button>
+      </div>
+      {result !== null && (
+        <div className="result">Результат: {result}</div>
+      )}
+    </div>
+  );
+}
+ReactDOM.createRoot(document.getElementById("root")).render(<Calculator />);
+</script>
+</body>
+</html>
