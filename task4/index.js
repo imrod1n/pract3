@@ -3,19 +3,19 @@ const people = [{
     name: 'Creola Katherine Johnson',
     profession: 'mathematician',
     accomplishment: 'spaceflight calculations',
-    imageId: 'MK3eW3A'
+    imageId: '1'
 }, {
     id: 1, // Used in JSX as a key
     name: 'Mario José Molina-Pasquel Henríquez',
     profession: 'chemist',
     accomplishment: 'discovery of Arctic ozone hole',
-    imageId: 'mynHUSa'
+    imageId: '2'
 }, {
     id: 2, // Used in JSX as a key
     name: 'Mohammad Abdus Salam',
     profession: 'physicist',
     accomplishment: 'electromagnetism theory',
-    imageId: 'bE7W1ji'
+    imageId: '3'
 }, {
     id: 3, // Used in JSX as a key
     name: 'Percy Lavon Julian',
@@ -32,9 +32,8 @@ const people = [{
   
 function getImageUrl(person) {
     return (
-        'https://i.imgur.com/' +
         person.imageId +
-        's.jpg'
+        '.jpg'
     );
 }
 

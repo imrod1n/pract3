@@ -7,3 +7,8 @@ td, th{
     padding: 5px;
     width: 33%;
 }
+
+img{
+    width: 3rem;
+    height: 3rem;
+}
